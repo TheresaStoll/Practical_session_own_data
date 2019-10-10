@@ -12,23 +12,35 @@ getwd()
 
 #Import raw data 
 #import data predictions from Jambeck paper
-Jambeck_data <- read_csv("data/FullDataWPredictions.csv")
+Jambeck_data_tidyverse <- read_csv("data/FullDataWPredictions.csv")
+
+glimpse(Jambeck_data_tidyverse)
+
+#use Lauren's approach
+#header = TRUE - makes info in first row the header/info for labels
+#na.strings = c("NA","") and na = c("NA","") tells R to treat both NA and empty strings
+#in columns of character data to missing. This is actually the default, but I include 
+#it because it is possible to change the code for missing data when you read a data 
+#file into R.
+Jambeck_data <- read.csv("data/FullDataWPredictions.csv", header = TRUE, na.strings=c("", "NA"))
+Jambeck_data
+
+glimpse(Jambeck_data)
+
 
 #import OC data for 2011
-OC_2011 <- read_csv("data/GPSPPM_2011.csv")
+OC_2011_tidyverse <- read_csv("data/GPSPPM_2011.csv")
 
+nrow(OC_2011_tidyverse)
+#nwor = to check how many rows the data has
+#number of rows: 6291
 
-Jambeck_data<- read.csv("FullDataWPredictions.csv", header=T, na.strings=c("","NA"))
-Jambeck_SI_data<- read.csv("Jambeck_SI.csv", header=T, na.strings=c("","NA"))
-rivers<-read.csv("rivers_lebreton.csv", header=T, na.strings=c("","NA"))
-PA_data<- read.csv("PA_DiveAgainstDebris_FULLDATASET.csv", header=T, na.strings=c("","NA")) #nrow 7369
-OC_data.2017<- read.csv("GPS-PPM-Item-Earth11.27.18.csv", header=T, na.strings=c("","NA")) #nrow 12858
-OC_data.11<- read.csv("GPSPPM 2011.csv", header=T, na.strings=c("","NA")) #nrow 6291
-OC_data.12<- read.csv("GPSPPM 2012.csv", header=T, na.strings=c("","NA")) #nrow 5625
-OC_data.13<- read.csv("GPS-PPM-Item-Earth_2013.csv", header=T, na.strings=c("","NA")) #nrow 5573
-OC_data.14<- read.csv("GPS-PPM-Item-Earth_2014.csv", header=T, na.strings=c("","NA")) #nrow 6100
-OC_data.15<- read.csv("GPS-PPM-Item-Earth_2015.csv", header=T, na.strings=c("","NA")) #nrow 5879
-OC_data.16<- read.csv("GPS-PPM-Item-Earth_2013-2016.csv", header=T, na.strings=c("","NA")) #2013-2016 NOTE some columns names and units differ to 2017 #nrow 9711
+#use Lauren's approach
+OC_2011 <- read.csv("data/GPSPPM_2011.csv", header = TRUE, na.strings = c("", "NA"))
+OC_2011
+
+nrow(OC_2011)
+#number of rows: 6291
 
 
 #Clean data: 
